@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм (простой)»
 
 * Студент: [Alla Zaharova](https://up.htmlacademy.ru/javascript/27/user/1489735).
-* Наставник: `Павел Нюкало`.
+* Наставник: [Павел Нюкало](https://htmlacademy.ru/profile/nyukalopavel).
 
 ---
 
