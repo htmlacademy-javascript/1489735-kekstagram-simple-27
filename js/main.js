@@ -100,4 +100,5 @@ const createPhotoList = () => {
   return arrPhoto;
 };
 
-const photoList = createPhotoList();
+createPhotoList();
+
