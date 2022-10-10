@@ -1,52 +1,10 @@
-// источник: https://up.htmlacademy.ru/profession/frontender/12/javascript/27/module/2/item/23 (Ретроспектива)
-function getRandomPositiveInteger(a, b) {
-  if (a < 0 || b < 0) {
-    return NaN;
-  }
+const PHOTOS_DESCRIPTION_COUNT = 25;
 
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-}
+const MIN_LIKES_COUNT = 15;
+const MAX_LIKES_COUNT = 200;
 
-getRandomPositiveInteger(1, 0);
-
-
-function checkStringLength(string, length) {
-  return string.length <= length;
-}
-
-checkStringLength('', 140);
-
-const ID = [1 ,2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
-const URL = [
-  'photos/1.jpg',
-  'photos/2.jpg',
-  'photos/3.jpg',
-  'photos/4.jpg',
-  'photos/5.jpg',
-  'photos/6.jpg',
-  'photos/7.jpg',
-  'photos/8.jpg',
-  'photos/9.jpg',
-  'photos/10.jpg',
-  'photos/11.jpg',
-  'photos/12.jpg',
-  'photos/13.jpg',
-  'photos/14.jpg',
-  'photos/15.jpg',
-  'photos/16.jpg',
-  'photos/17.jpg',
-  'photos/18.jpg',
-  'photos/19.jpg',
-  'photos/20.jpg',
-  'photos/21.jpg',
-  'photos/22.jpg',
-  'photos/23.jpg',
-  'photos/24.jpg',
-  'photos/25.jpg'
-];
+const MIN_COMMENTS_COUNT = 0;
+const MAX_COMMENTS_COUNT = 200;
 
 const DESCRIPTION = [
   'Вид сверху на воду и пляж с шезлонгами.',
@@ -76,24 +34,36 @@ const DESCRIPTION = [
   'Машина в диких джунглях'
 ];
 
-const LIKES = function(startNumber, endNumber) {
-  return getRandomPositiveInteger(startNumber, endNumber);
-};
+// источник: https://up.htmlacademy.ru/profession/frontender/12/javascript/27/module/2/item/23 (Ретроспектива)
+function getRandomPositiveInteger(a, b) {
+  if (a < 0 || b < 0) {
+    return NaN;
+  }
 
-const COMMENTS = function(startNumber, endNumber) {
-  return getRandomPositiveInteger(startNumber, endNumber);
-};
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+}
+
+getRandomPositiveInteger(1, 0);
+
+function checkStringLength(string, length) {
+  return string.length <= length;
+}
+
+checkStringLength('', 140);
 
 const createPhotoList = () => {
   const arrPhoto = [];
 
-  for(let i = 0; i < 25; i++) {
+  for (let i = 0; i < PHOTOS_DESCRIPTION_COUNT; i++) {
     arrPhoto.push({
-      id: ID[i],
-      url: URL[i],
+      id: i + 1,
+      url: `photos/${i + 1}.jpg`,
       decription: DESCRIPTION[i],
-      likes: LIKES(15, 200),
-      comments: COMMENTS(0, 200)
+      likes: getRandomPositiveInteger(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
+      comments: getRandomPositiveInteger(MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT)
     });
   }
 
@@ -101,4 +71,3 @@ const createPhotoList = () => {
 };
 
 createPhotoList();
-
