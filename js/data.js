@@ -43,7 +43,7 @@ const createPhotoList = () => {
     arrPhoto.push({
       id: i + 1,
       url: `photos/${i + 1}.jpg`,
-      decription: DESCRIPTION[i],
+      description: DESCRIPTION[i],
       likes: getRandomPositiveInteger(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
       comments: getRandomPositiveInteger(MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT)
     });
@@ -52,6 +52,5 @@ const createPhotoList = () => {
   return arrPhoto;
 };
 
-createPhotoList();
-
+export { createPhotoList };
 
