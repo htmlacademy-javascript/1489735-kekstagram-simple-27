@@ -3,7 +3,7 @@ const overlay = document.querySelector('.img-upload__overlay');
 const body = document.querySelector('body');
 const buttonCancel = document.querySelector('#upload-cancel');
 const fileField = document.querySelector('#upload-file');
-const textField = document.querySelector('.text-description');
+const textField = document.querySelector('.text__description');
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__text',
@@ -44,8 +44,10 @@ const onFileInputChange = () => {
 };
 
 const onFormSubmit = (evt) => {
-  evt.preventDefault();
-  pristine.validate();
+  const isValid = pristine.validate();
+  if (!isValid) {
+    evt.preventDefault();
+  }
 };
 
 fileField.addEventListener('change', onFileInputChange);
