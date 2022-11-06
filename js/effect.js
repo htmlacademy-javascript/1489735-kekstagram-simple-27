@@ -1,8 +1,3 @@
-const imagePreview = document.querySelector('.img-upload__preview img');
-const form = document.querySelector('.img-upload__form');
-const sliderElement = document.querySelector('.effect-level__slider');
-const levelEffect = document.querySelector('.effect-level__value');
-
 const EFFECTS = [
   {
     name:'none',
@@ -53,6 +48,12 @@ const EFFECTS = [
 ];
 
 const INITIAL_EFFECT = EFFECTS[0];
+
+const imagePreview = document.querySelector('.img-upload__preview img');
+const form = document.querySelector('.img-upload__form');
+const sliderElement = document.querySelector('.effect-level__slider');
+const levelEffect = document.querySelector('.effect-level__value');
+
 let selectEffect = INITIAL_EFFECT;
 
 const isInitial = () => selectEffect === INITIAL_EFFECT;
