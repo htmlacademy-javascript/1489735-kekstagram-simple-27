@@ -1,15 +1,15 @@
-const increaseScale = document.querySelector('.scale__control--bigger');
-const decreaseScale = document.querySelector('.scale__control--smaller');
-const inputScale = document.querySelector('.scale__control--value');
-const imagePreview = document.querySelector('.img-upload__preview img');
-
 const SCALE_STEP = 25;
 const SCALE_MIN = 25;
 const SCALE_MAX = 100;
 const SCALE_INITIAL = 100;
 
+const increaseScale = document.querySelector('.scale__control--bigger');
+const decreaseScale = document.querySelector('.scale__control--smaller');
+const inputScale = document.querySelector('.scale__control--value');
+const imagePreview = document.querySelector('.img-upload__preview img');
+
 const imageScale = (value = SCALE_INITIAL) => {
-  imagePreview.style.transform = `scale(${value / 100})`;
+  imagePreview.style.transform = `scale(${value / SCALE_MAX})`;
   inputScale.value = `${value}%`;
 };
 
