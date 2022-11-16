@@ -1,5 +1,8 @@
-import { createPhotoList } from './data.js';
 import { renderPictures } from './picture.js';
 import './form.js';
+import { getData } from './api.js';
 
-renderPictures(createPhotoList());
+
+getData((pictures) => {
+  renderPictures(pictures);
+});
