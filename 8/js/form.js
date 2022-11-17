@@ -3,6 +3,8 @@ import { resetEffects } from './effect.js';
 import { sendData } from './api.js';
 import { showSuccessMessage, showErrorMessage } from './message.js';
 
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+
 const form = document.querySelector('.img-upload__form');
 const overlay = document.querySelector('.img-upload__overlay');
 const body = document.querySelector('body');
@@ -52,15 +54,14 @@ const onCancelButtonClick = () => {
   closeModal();
 };
 
-const onFileInputChange = (evt) => {
-  if (evt.target.files.length > 0) {
-    const src = URL.createObjectURL(evt.target.files[0]);
+const onFileInputChange = () => {
+  const file = fileField.files[0];
+  const fileName = file.name.toLowerCase();
 
-    if (!previewImg.dataset.src) {
-      previewImg.dataset.src = previewImg.src;
-    }
+  const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
 
-    previewImg.src = src;
+  if (matches) {
+    previewImg.src = URL.createObjectURL(file);
 
     showModal();
   }
