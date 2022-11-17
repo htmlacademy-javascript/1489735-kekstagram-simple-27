@@ -46,7 +46,7 @@ function closeMessage () {
   messageElement.remove();
   document.removeEventListener('keydown', onMessageEscKeydown);
   document.removeEventListener('click', onOverlayClick);
-  bodyElement.style.overflow = 'auto';
+  bodyElement.style.overflow = 'hidden';
 }
 
 export { showSuccessMessage, showErrorMessage };
