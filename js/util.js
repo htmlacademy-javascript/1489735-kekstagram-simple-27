@@ -1,22 +1,24 @@
-// источник: https://up.htmlacademy.ru/profession/frontender/12/javascript/27/module/2/item/23 (Ретроспектива)
-function getRandomPositiveInteger(a, b) {
-  if (a < 0 || b < 0) {
-    return NaN;
-  }
+const ALERT_SHOW_TIME = 5000;
 
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-}
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.style.zIndex = '100';
+  alertContainer.style.position = 'absolute';
+  alertContainer.style.left = '0';
+  alertContainer.style.top = '0';
+  alertContainer.style.right = '0';
+  alertContainer.style.padding = '10px 3px';
+  alertContainer.style.fontSize = '30px';
+  alertContainer.style.textAlign = 'center';
+  alertContainer.style.backgroundColor = 'red';
 
-getRandomPositiveInteger(1, 0);
+  alertContainer.textContent = message;
 
-function checkStringLength(string, length) {
-  return string.length <= length;
-}
+  document.body.append(alertContainer);
 
-checkStringLength('', 140);
+  setTimeout(() => {
+    alertContainer.remove();
+  }, ALERT_SHOW_TIME);
+};
 
-
-export {getRandomPositiveInteger};
+export { showAlert };
