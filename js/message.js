@@ -6,7 +6,7 @@ const successMessageTemplate = document
 const errorMessageTemplate = document
   .querySelector('#error')
   .content.querySelector('.error');
-const bodyElement = document.querySelector('body');
+const body = document.querySelector('body');
 
 const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 
@@ -26,27 +26,28 @@ const onMessageEscKeydown = (evt) => {
 };
 
 const showSuccessMessage = () => {
-  const successMessageElement = successMessageTemplate.cloneNode(true);
+  const successMessage = successMessageTemplate.cloneNode(true);
   document.addEventListener('keydown', onMessageEscKeydown);
   document.addEventListener('click', onOverlayClick);
-  bodyElement.append(successMessageElement);
-  bodyElement.style.overflow = 'hidden';
+  body.append(successMessage);
+  body.style.overflow = 'hidden';
 };
 
 const showErrorMessage = () => {
-  const errorMessageElement = errorMessageTemplate.cloneNode(true);
+  const errorMessage = errorMessageTemplate.cloneNode(true);
   document.addEventListener('keydown', onMessageEscKeydown);
-  errorMessageElement.querySelector('.error__button').addEventListener('click', onErrorButtonClick);
-  bodyElement.append(errorMessageElement);
-  bodyElement.style.overflow = 'hidden';
+  errorMessage.querySelector('.error__button').addEventListener('click', onErrorButtonClick);
+  document.addEventListener('click', onOverlayClick);
+  body.append(errorMessage);
+  body.style.overflow = 'hidden';
 };
 
 function closeMessage () {
-  const messageElement = document.querySelector('.success') || document.querySelector('.error');
-  messageElement.remove();
+  const message = document.querySelector('.success') || document.querySelector('.error');
+  message.remove();
   document.removeEventListener('keydown', onMessageEscKeydown);
   document.removeEventListener('click', onOverlayClick);
-  bodyElement.style.overflow = 'hidden';
+  body.style.overflow = 'hidden';
 }
 
 export { showSuccessMessage, showErrorMessage };

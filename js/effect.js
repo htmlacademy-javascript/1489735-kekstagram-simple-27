@@ -51,7 +51,7 @@ const INITIAL_EFFECT = EFFECTS[0];
 
 const imagePreview = document.querySelector('.img-upload__preview img');
 const form = document.querySelector('.img-upload__form');
-const sliderElement = document.querySelector('.effect-level__slider');
+const slider = document.querySelector('.effect-level__slider');
 const levelEffect = document.querySelector('.effect-level__value');
 
 let selectEffect = INITIAL_EFFECT;
@@ -59,8 +59,8 @@ let selectEffect = INITIAL_EFFECT;
 const isInitial = () => selectEffect === INITIAL_EFFECT;
 
 const updateSlider = () => {
-  sliderElement.classList.remove('hidden');
-  sliderElement.noUiSlider.updateOptions({
+  slider.classList.remove('hidden');
+  slider.noUiSlider.updateOptions({
     range: {
       min:selectEffect.min,
       max:selectEffect.max,
@@ -70,7 +70,7 @@ const updateSlider = () => {
   });
 
   if (isInitial()) {
-    sliderElement.classList.add('hidden');
+    slider.classList.add('hidden');
   }
 };
 
@@ -90,7 +90,7 @@ const onSliderUpdate = () => {
     return;
   }
 
-  const sliderValue = sliderElement.noUiSlider.get();
+  const sliderValue = slider.noUiSlider.get();
   imagePreview.style.filter = `${selectEffect.style}(${sliderValue}${selectEffect.unit})`;
   imagePreview.classList.add(`effects__preview--${selectEffect.name}`);
   levelEffect.value = sliderValue;
@@ -101,7 +101,7 @@ const resetEffects = () => {
   updateSlider();
 };
 
-noUiSlider.create(sliderElement, {
+noUiSlider.create(slider, {
   range: {
     min: INITIAL_EFFECT.min,
     max: INITIAL_EFFECT.max,
@@ -113,7 +113,7 @@ noUiSlider.create(sliderElement, {
 updateSlider();
 
 form.addEventListener('change', onFormChange);
-sliderElement.noUiSlider.on('update', onSliderUpdate);
+slider.noUiSlider.on('update', onSliderUpdate);
 
 export { resetEffects };
 
