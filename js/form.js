@@ -10,7 +10,6 @@ const overlay = document.querySelector('.img-upload__overlay');
 const body = document.querySelector('body');
 const buttonCancel = document.querySelector('#upload-cancel');
 const fileField = document.querySelector('#upload-file');
-const textField = document.querySelector('.text__description');
 const submitButton = document.querySelector('#upload-submit');
 const previewImg = document.querySelector('.img-upload__preview > img');
 
@@ -23,28 +22,20 @@ const pristine = new Pristine(form, {
 const showModal = () => {
   overlay.classList.remove('hidden');
   body.classList.add('modal-open');
-  document.addEventListener('keydown', onEscKeyDown);
 };
 
 const closeModal = () => {
+  overlay.classList.add('hidden');
+  body.classList.remove('modal-open');
+  fileField.value = '';
+};
+
+const resetPage = () => {
   form.reset();
   resetScale();
   resetEffects();
   pristine.reset();
-  overlay.classList.add('hidden');
-  body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onEscKeyDown);
 };
-
-const isTextFieldFocused = () =>
-  document.activeElement === textField;
-
-function onEscKeyDown(evt) {
-  if (evt.key === 'Escape' && !isTextFieldFocused()) {
-    evt.preventDefault();
-    closeModal();
-  }
-}
 
 const onCancelButtonClick = () => {
   previewImg.src = previewImg.dataset.src ? previewImg.dataset.src : '';
@@ -85,6 +76,8 @@ const onFormSubmit = (evt) => {
     blockSubmitButton();
     sendData(
       () => {
+        closeModal();
+        resetPage();
         showSuccessMessage();
         unblockSubmitButton();
       },
