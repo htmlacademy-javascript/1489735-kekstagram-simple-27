@@ -2,7 +2,7 @@ const pictureTemplate = document
   .querySelector('#picture')
   .content.querySelector('.picture');
 
-const containter = document.querySelector('.pictures');
+const container = document.querySelector('.pictures');
 
 const createPicture = (data) => {
   const { comments, description, likes, url } = data;
@@ -23,7 +23,7 @@ const renderPictures = (pictures) => {
     fragment.append(pictureElement);
   });
 
-  containter.append(fragment);
+  container.append(fragment);
 };
 
 export { renderPictures };
